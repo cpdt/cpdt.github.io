@@ -5,104 +5,326 @@
 
     <title>cpdt.dev</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffb400">
-    <meta name="msapplication-TileColor" content="#070809">
-    <meta name="theme-color" content="#070809">
-
     <style>
         html, body {
+            margin: 0;
+            padding: 0;
             height: 100%;
         }
 
-        body {
-            box-sizing: border-box;
-            margin: 0;
-            background: #070809;
-            font-family: Helvetica, Arial, sans-serif;
-            text-align: center;
-            padding: 1em;
+        #background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
 
+        #content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
         }
 
-        a {
-            color: #cfe0fe;
+        #content > svg {
+            text-align: center;
+            height: 10em;
+            fill: white;
+            filter: drop-shadow(0 5px 30px #000) drop-shadow(0 5px 10px #000);
+            margin: 0 10px 2em;
+        }
+
+        #content div {
+            text-align: center;
+        }
+
+        #content a {
+            display: inline-block;
             text-decoration: none;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
         }
-
-        a:hover {
-            text-decoration: underline;
+        #content a svg {
+            fill: #fff;
+            stroke: #fff;
+            filter: drop-shadow(0 0 15px #000) drop-shadow(0 0 10px #000) drop-shadow(0 0 5px #000);
         }
-
-        header svg {
-            width: 100%;
-            max-height: 17em;
-            margin-bottom: 2em;
-        }
-
-        section p {
-            color: #666;
-            font-weight: bold;
-            font-size: 1.5em;
-            text-transform: uppercase;
-        }
-
-        section {
-            margin-bottom: 4em;
-        }
-
-        footer p {
-            font-size: 0.6em;
-            color: #555;
-            font-style: italic;
-        }
-
-        footer {
-            margin-bottom: 2em;
+        #content a svg:hover {
+            fill: #ffc864;
+            stroke: #ffc864;
         }
     </style>
 </head>
 <body>
 
-<div>
-    <header>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.31 38.7">
-            <g fill="#ffb400">
-                <path d="M35.53,9.07l-1.29.84a17.8,17.8,0,0,0-6.33-5.67,17.75,17.75,0,0,0-15.29-.68A17.88,17.88,0,0,0,6.93,7.35,18,18,0,0,0,3.14,13a17.64,17.64,0,0,0,0,13.82,17.77,17.77,0,0,0,3.79,5.69,17.91,17.91,0,0,0,5.69,3.8,17.78,17.78,0,0,0,15.3-.7A18,18,0,0,0,34.26,30l1.24.95A19.32,19.32,0,0,1,28.63,37a18.84,18.84,0,0,1-9.1,2.27A18.73,18.73,0,0,1,12,37.76,19,19,0,0,1,1.72,27.47a19.11,19.11,0,0,1,0-15A19.11,19.11,0,0,1,12,2.14a19.25,19.25,0,0,1,16.63.74A19.42,19.42,0,0,1,35.53,9.07ZM33,10.84l-1.29.84A14.55,14.55,0,0,0,26.46,7a14.72,14.72,0,0,0-12.65-.57A14.61,14.61,0,0,0,9.12,9.54,14.87,14.87,0,0,0,4.83,20,14.34,14.34,0,0,0,6,25.67a14.49,14.49,0,0,0,3.13,4.7,14.77,14.77,0,0,0,4.69,3.13,14.55,14.55,0,0,0,5.72,1.16,14.34,14.34,0,0,0,7-1.74,14.78,14.78,0,0,0,5.22-4.71l1.25.92a16.07,16.07,0,0,1-5.78,5.17,15.83,15.83,0,0,1-7.64,1.91A15.86,15.86,0,0,1,11.38,34,16.24,16.24,0,0,1,5.46,28.1,15.92,15.92,0,0,1,3.28,20,16,16,0,0,1,5.46,11.8a16.31,16.31,0,0,1,5.92-5.92A16,16,0,0,1,19.53,3.7a15.91,15.91,0,0,1,7.68,1.92A16.3,16.3,0,0,1,33,10.84Zm-2.58,1.72-1.29.84A11.53,11.53,0,0,0,25,9.71a11.62,11.62,0,0,0-11.29.19,11.59,11.59,0,0,0-4.23,4.23,11.66,11.66,0,0,0,0,11.65A11.57,11.57,0,0,0,13.71,30a11.64,11.64,0,0,0,11.3.19,11.65,11.65,0,0,0,4.13-3.72l1.27.88a13.14,13.14,0,0,1-10.88,5.76A13.09,13.09,0,0,1,8.14,26.55a13.19,13.19,0,0,1,0-13.2A13.11,13.11,0,0,1,19.53,6.8a12.86,12.86,0,0,1,6.2,1.54A13,13,0,0,1,30.41,12.56Zm-2.56,1.76-1.27.84a8.47,8.47,0,0,0-7-3.72A8.5,8.5,0,0,0,11,20a8.21,8.21,0,0,0,2.49,6,8.18,8.18,0,0,0,6,2.5,8.34,8.34,0,0,0,4-1,8.54,8.54,0,0,0,3-2.73l1.25.9a10,10,0,0,1-3.57,3.2,10,10,0,0,1-8.63.39,10.11,10.11,0,0,1-3.21-2.15,10,10,0,0,1-2.15-3.22,9.91,9.91,0,0,1,0-7.8,10,10,0,0,1,5.36-5.36,10,10,0,0,1,8.65.39A10.11,10.11,0,0,1,27.85,14.32Z" transform="translate(-0.18 -0.6)"></path>
-                <path d="M50.53,27.09h9a11,11,0,0,0,4.41-.91,11.78,11.78,0,0,0,3.66-2.48,11.52,11.52,0,0,0,2.49-3.78A12.32,12.32,0,0,0,71,15.18a10.89,10.89,0,0,0-1.57-5.66,11.91,11.91,0,0,0-4.22-4.24A11,11,0,0,0,59.52,3.7H40V37.75H38.49V2.15h21A12.37,12.37,0,0,1,66,4a13.51,13.51,0,0,1,4.79,4.8,12.41,12.41,0,0,1,1.79,6.43,14.5,14.5,0,0,1-1.06,5.62,12.13,12.13,0,0,1-2.83,4.27,12.81,12.81,0,0,1-4.15,2.63,13.33,13.33,0,0,1-5,.94h-9Zm0-3.09h9a8.26,8.26,0,0,0,4.14-1.09,8.18,8.18,0,0,0,3.07-3.13,9.07,9.07,0,0,0,1.17-4.6,8.06,8.06,0,0,0-2.52-5.85A8,8,0,0,0,59.52,6.8H43.14v31H41.59V5.25H59.52a9.45,9.45,0,0,1,4.9,1.37,10.52,10.52,0,0,1,3.67,3.68,9.4,9.4,0,0,1,1.36,4.88,10.57,10.57,0,0,1-1.37,5.32,10,10,0,0,1-3.65,3.72,9.59,9.59,0,0,1-4.91,1.32h-9Zm0-3.1h9a5.15,5.15,0,0,0,3.75-1.5,5.58,5.58,0,0,0,1.54-4.22,5.12,5.12,0,0,0-1.61-3.67,5.06,5.06,0,0,0-3.68-1.62H46.23V37.75H44.69V8.34H59.52a6.5,6.5,0,0,1,4.77,2.09,6.56,6.56,0,0,1,2.07,4.75,7.14,7.14,0,0,1-2,5.28,6.65,6.65,0,0,1-4.84,2h-9Zm-1.2,16.85H47.78V11.44H59.52a3.56,3.56,0,0,1,2.63,1.12,3.59,3.59,0,0,1,1.11,2.62q0,4.17-3.74,4.17h-9V17.8h9a2.16,2.16,0,0,0,1.61-.58,2.83,2.83,0,0,0,.58-2,2.13,2.13,0,0,0-.63-1.57A2.15,2.15,0,0,0,59.52,13H49.33Z" transform="translate(-0.18 -0.6)"></path>
-                <path d="M95.79,37.75H75.94V2.15H95.79a14,14,0,0,1,7.82,2.39,17.06,17.06,0,0,1,5.8,6.49A18.87,18.87,0,0,1,111.57,20a19,19,0,0,1-1.28,6.91,18.3,18.3,0,0,1-3.41,5.69,16.12,16.12,0,0,1-5,3.8A13.85,13.85,0,0,1,95.79,37.75Zm-18.3-1.54h18.3a12.18,12.18,0,0,0,5.44-1.29,14.65,14.65,0,0,0,4.53-3.46,16.8,16.8,0,0,0,3.07-5.2,17.86,17.86,0,0,0,0-12.61,17.1,17.1,0,0,0-3.07-5.19A14.53,14.53,0,0,0,101.23,5,12.18,12.18,0,0,0,95.79,3.7H77.49ZM79,34.66V5.25H95.79a10.92,10.92,0,0,1,6.25,2,14,14,0,0,1,4.63,5.37A16.15,16.15,0,0,1,108.39,20a16.22,16.22,0,0,1-1.72,7.38A13.94,13.94,0,0,1,102,32.69a10.94,10.94,0,0,1-6.25,2Zm1.55-1.55h15.2a9.42,9.42,0,0,0,5.47-1.76,12.53,12.53,0,0,0,4-4.8,14.67,14.67,0,0,0,1.5-6.6,14.72,14.72,0,0,0-1.5-6.59,12.4,12.4,0,0,0-4-4.8A9.34,9.34,0,0,0,95.79,6.8H80.59Zm1.55-1.55V8.34H95.79a7.91,7.91,0,0,1,4.68,1.55,10.78,10.78,0,0,1,3.46,4.23A13.38,13.38,0,0,1,105.21,20a13.41,13.41,0,0,1-1.28,5.83A10.78,10.78,0,0,1,100.47,30a7.84,7.84,0,0,1-4.68,1.55ZM83.68,30H95.79a6.83,6.83,0,0,0,5.51-3A11.2,11.2,0,0,0,103.61,20a12,12,0,0,0-1.06-5,9.32,9.32,0,0,0-2.86-3.67,6.42,6.42,0,0,0-3.9-1.34H83.68Zm1.55-1.54v-17H95.79a5.34,5.34,0,0,1,4.39,2.5A9.86,9.86,0,0,1,102,20a9.83,9.83,0,0,1-1.84,6,5.34,5.34,0,0,1-4.39,2.5Zm1.55-1.55h9a3.93,3.93,0,0,0,3.28-2A8.7,8.7,0,0,0,100.43,20,8.63,8.63,0,0,0,99.07,15a3.92,3.92,0,0,0-3.28-2h-9Z" transform="translate(-0.18 -0.6)"></path>
-                <path d="M114.28,3.7V2.15H137.5V3.7Zm0,3.1V5.25H137.5V6.8Zm0,3.09V8.34H137.5V9.89h-6.2V37.75h-1.54V9.89h-1.55V37.75h-1.55V9.89h-1.55V37.75h-1.55V9.89H122V37.75h-1.55V9.89Z" transform="translate(-0.18 -0.6)"></path>
-            </g>
-        </svg>
-    </header>
+<canvas id="background"></canvas>
 
-    <section>
-        <p>
-            <a href="https://github.com/cpdt" target="_blank" title="cpdt on Github">Github</a>
-            ·
-            <a href="https://twitter.com/copodt" target="_blank" title="copodt on Twitter">Twitter</a>
-            ·
-            <a href="https://www.youtube.com/channel/UCb7yoMdOKPzCdHgQVNNbItA" target="_blank" title="cpdt on Youtube">Youtube</a>
-            ·
-            <a href="http://www.pouet.net/user.php?who=100313" target="_blank" title="cpdt on Pouet">Pouet</a>
-            ·
-            <a href="https://keybase.io/cpdt" target="_blank" title="cpdt on Keybase">Keybase</a>
-            ·
-            <a href="mailto:contact@cpdt.dev" target="_blank" title="Send me an email">Contact</a>
-        </p>
-    </section>
-
-    <footer>
-        <p>est. 1999</p>
-    </footer>
+<div id="content">
+    <svg role="heading" viewBox="0 0 166.03 52.63">
+        <path d="M19.39,10.39v9.07h10.3v6.05H19.39V43.73A6.63,6.63,0,0,0,20,47.08c.43.69,1.47,1,3.1,1A14.66,14.66,0,0,0,28.39,47l2.16,5.62a24.81,24.81,0,0,1-11.34,2.8c-3.86,0-6.48-.82-7.84-2.48s-2.06-4.07-2.06-7.24V25.51H6.07l-.79-4.39A12.13,12.13,0,0,1,10,18.38q.87-5.89,4.11-8Z" transform="translate(-5.28 -3.41)"/>
+        <path d="M50.46,56q-8.53,0-12.63-4.54T33.72,37.79q0-9.18,4.57-14t13.14-4.86q8.58,0,12.71,4.32t4.14,13.5q0,9.18-4.64,14.25T50.46,56ZM44.09,37.18Q44.09,48.7,51,48.7a5.78,5.78,0,0,0,5.22-2.63q1.7-2.62,1.69-8.61,0-11.22-7-11.23a5.69,5.69,0,0,0-5.11,2.49Q44.09,31.2,44.09,37.18Z" transform="translate(-5.28 -3.41)"/>
+        <path d="M73.39,19.46a34.18,34.18,0,0,1,7.13-.86c2.11,0,3.86,0,5.26.14v3.6A15.31,15.31,0,0,1,90.1,19.9a12.88,12.88,0,0,1,4.68-1q8.2,0,10.94,4.1A16.72,16.72,0,0,1,116,18.89q7.92,0,10.65,3.56t2.74,13.36V47.47a9.73,9.73,0,0,1,4,2.45l-.72,5.54H116l-.72-5.54a8.49,8.49,0,0,1,4-2.45V33.22c0-2.64-.36-4.4-1.08-5.26s-2.15-1.3-4.29-1.3A9.45,9.45,0,0,0,107.81,29a49.19,49.19,0,0,1,.36,6.77V47.47a9.73,9.73,0,0,1,4,2.45l-.72,5.54H94.85l-.72-5.54a8.49,8.49,0,0,1,4-2.45V33.22c0-2.64-.36-4.4-1.08-5.26s-2.14-1.3-4.25-1.3A9.55,9.55,0,0,0,86.71,29v18.5a9.59,9.59,0,0,1,4,2.45L90,55.46H73.39l-.72-5.54a8.6,8.6,0,0,1,4-2.45v-20a9.4,9.4,0,0,1-4-2.45Z" transform="translate(-5.28 -3.41)"/>
+        <path d="M135,4.34a33.51,33.51,0,0,1,7.49-.93q3.47,0,5.83.21v18a17.44,17.44,0,0,1,8.86-2.73q7.85,0,11,4t3.16,13.75A26.64,26.64,0,0,1,169.84,46a14.07,14.07,0,0,1-4,6,16.79,16.79,0,0,1-11.23,4A20.88,20.88,0,0,1,145,53.59a3.9,3.9,0,0,1-3.17,1.87h-3.6V12.34a9.4,9.4,0,0,1-4-2.45ZM154,48.7q6.91,0,6.92-11.6,0-6.12-1.19-8.31a4.3,4.3,0,0,0-4.14-2.2A11.14,11.14,0,0,0,148.27,29v18.5A15.73,15.73,0,0,0,154,48.7Z" transform="translate(-5.28 -3.41)"/>
+    </svg>
+    <!--<h1>tom b</h1>-->
+    <div>
+        <a href="https://github.com/cpdt" title="cpdt on Github" target="_blank">
+            <svg role="img" viewBox="0 0 24 24">
+                <path stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+        </a>
+        <a href="https://twitter.com/copodt" title="copodt on Twitter" target="_blank">
+            <svg role="img" viewBox="0 0 24 24">
+                <path stroke="none" d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/>
+            </svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCb7yoMdOKPzCdHgQVNNbItA" title="cpdt on Youtube" target="_blank">
+            <svg role="img" viewBox="0 0 24 24">
+                <path stroke="none" d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+        </a>
+        <a href="http://www.pouet.net/user.php?who=100313" title="cpdt on Pouet" target="_blank">
+            <svg role="img" viewBox="0 0 103 103">
+                <g fill="none" stroke-width="6">
+                    <path d="M7.08883193,87.1819977 L58.3945397,35.87629 C58.3945397,35.87629 62.8700428,30.3924039 64.9200233,21.3079572 C66.9700501,12.2233055 65.3420408,0.636158443 65.3420408,0.636158443 L82.2170938,17.5112115 L99.0921469,34.3862645 C99.0921469,34.3862645 87.5049998,32.7582552 78.4203481,34.808282 C69.3359015,36.8582625 64.1433256,41.0915506 64.1433256,41.0915506 L12.5651987,92.6696776 L13.22568,93.7328362 C14.0492479,95.129356 13.7806014,97.1977393 12.6322189,98.3461218 L12.5827812,98.3955595 C11.4314537,99.5468869 9.56790958,99.5500134 8.42157804,98.4036819 L1.32462342,91.3067273 C0.177781845,90.1598857 0.184363356,88.2939066 1.33274587,87.1455241 L1.3821835,87.0960865 C2.53351098,85.944759 4.60009046,85.6704467 5.99527872,86.5024349 L7.08883193,87.1819977 L7.08883193,87.1819977 Z" id="Layer-1"></path>
+                    <path d="M28.7794259,90.6364413 C24.8961615,86.753177 24.8989857,80.4543373 28.7780723,76.5752507 L49.8745958,55.4787272 C53.7571125,51.5962105 60.0516682,51.5959626 63.9357864,55.4800808 L63.9357864,55.4800808 C67.8190507,59.3633452 67.8162265,65.6621849 63.93714,69.5412714 L42.8406165,90.6377949 C38.9580997,94.5203117 32.6635441,94.5205595 28.7794259,90.6364413 L28.7794259,90.6364413 L28.7794259,90.6364413 Z" id="Layer-2"></path>
+                    <path d="M53.3888782,80.0895332 L29.4825531,56.183208" id="Layer-3"></path>
+                    <path d="M44.9513517,88.5270597 L21.0450266,64.6207346" id="Layer-4"></path>
+                    <path d="M61.8264047,71.6520067 L37.9200796,47.7456815" id="Layer-5"></path>
+                    <path d="M21.0450266,64.6207346 C22.2100059,63.4557553 22.2100059,61.5669506 21.0450266,60.4019713 C19.8800473,59.236992 17.9912426,59.236992 16.8262633,60.4019713 C15.661284,61.5669506 15.661284,63.4557553 16.8262633,64.6207346 C17.9912426,65.7857139 19.8800473,65.7857139 21.0450266,64.6207346 L21.0450266,64.6207346 Z" id="Layer-6"></path>
+                    <path d="M29.4825531,56.183208 C30.6475324,55.0182287 30.6475324,53.1294241 29.4825531,51.9644448 C28.3175738,50.7994655 26.4287691,50.7994655 25.2637898,51.9644448 C24.0988105,53.1294241 24.0988105,55.0182287 25.2637898,56.183208 C26.4287691,57.3481873 28.3175738,57.3481873 29.4825531,56.183208 L29.4825531,56.183208 Z" id="Layer-7"></path>
+                    <path d="M37.9200796,47.7456815 C39.0850589,46.5807022 39.0850589,44.6918976 37.9200796,43.5269183 C36.7551003,42.3619389 34.8662957,42.3619389 33.7013163,43.5269183 C32.536337,44.6918976 32.536337,46.5807022 33.7013163,47.7456815 C34.8662957,48.9106608 36.7551003,48.9106608 37.9200796,47.7456815 L37.9200796,47.7456815 Z" id="Layer-8"></path>
+                </g>
+            </svg>
+        </a>
+        <a href="https://keybase.io/cpdt" title="cpdt on Keybase" target="_blank">
+            <svg role="img" viewBox="0 0 24 24">
+                <path stroke="none" d="M10.446 21.371c0 .528-.428.953-.954.953-.525 0-.954-.425-.954-.953 0-.526.428-.954.953-.954.524 0 .951.431.951.955m5.922-.001c0 .528-.428.953-.955.953-.526 0-.952-.425-.952-.953 0-.526.423-.954.949-.954s.954.431.954.955M20.904 12.213l-.156-.204c-.046-.06-.096-.116-.143-.175-.045-.061-.094-.113-.141-.169-.104-.12-.209-.239-.319-.359l-.076-.08-.091-.099-.135-.131c-.015-.018-.032-.034-.05-.053-1.16-1.139-2.505-1.986-3.955-2.504l-.23-.078c.012-.027.024-.055.035-.083.41-1.064.367-2.223-.12-3.255-.491-1.035-1.356-1.8-2.438-2.16-.656-.216-1.23-.319-1.711-.305-.033-.105-.1-.577.496-1.848L10.663 0l-.287.399c-.33.455-.648.895-.945 1.328-.328-.345-.766-.552-1.245-.58L6.79 1.061h-.012c-.033-.003-.07-.003-.104-.003-.99 0-1.81.771-1.87 1.755l-.088 1.402v.003c-.061 1.029.727 1.915 1.755 1.979l1.002.061c-.065.84.073 1.62.405 2.306-1.346.562-2.586 1.401-3.66 2.484C.913 14.391.913 18.051.913 20.994v1.775l1.305-1.387c.266.93.652 1.807 1.145 2.615H5.06c-.833-1.114-1.419-2.426-1.68-3.848l1.913-2.03-.985 3.091 1.74-1.268c3.075-2.234 6.744-2.75 10.91-1.529 1.805.532 3.56.039 4.473-1.257l.104-.165c.091.498.141.998.141 1.496 0 1.563-.255 3.687-1.38 5.512h1.611c.776-1.563 1.181-3.432 1.181-5.512-.001-2.199-.786-4.421-2.184-6.274zM8.894 6.191c.123-1.002.578-1.949 1.23-2.97.025.05.054.097.084.144.264.398.713.625 1.199.605.217-.008.605.025 1.233.232.714.236 1.286.744 1.608 1.425s.349 1.442.079 2.149c-.173.445-.454.82-.806 1.109l-.408-.502-.002-.003c-.279-.341-.694-.535-1.134-.535-.335 0-.664.117-.925.33-.334.27-.514.66-.534 1.058-1.2-.541-1.8-1.643-1.628-3.041l.004-.001zm4.304 5.11l-.519.425c-.046.036-.095.053-.146.053-.066 0-.133-.03-.177-.085l-.111-.135c-.083-.1-.067-.25.034-.334l.51-.42-1.055-1.299c-.109-.133-.091-.33.044-.436.058-.048.126-.072.194-.072.091 0 .181.038.24.113l2.963 3.645c.109.135.09.33-.042.436-.039.029-.082.053-.126.063-.023.006-.045.009-.07.009-.09 0-.178-.04-.24-.113l-.295-.365-1.045.854c-.046.037-.1.055-.154.055-.068 0-.139-.03-.186-.09l-.477-.579c-.082-.102-.068-.252.035-.336l1.051-.857-.426-.533-.002.001zM7.753 4.866l-1.196-.075c-.255-.015-.45-.235-.435-.488l.09-1.401c.014-.245.216-.436.461-.436h.024l1.401.091c.123.006.236.06.317.152.083.094.123.21.116.336l-.007.101c-.32.567-.585 1.134-.773 1.72h.002zm12.524 11.481c-.565.805-1.687 1.081-2.924.718-3.886-1.141-7.396-.903-10.468.701l1.636-5.123-5.291 5.609c.099-3.762 2.453-6.966 5.758-8.311.471.373 1.034.66 1.673.841.16.044.322.074.48.102-.183.458-.119.997.21 1.407l.075.09c-.172.45-.105.975.221 1.374l.475.582c.266.325.659.513 1.079.513.321 0 .635-.111.886-.314l.285-.232c.174.074.367.113.566.113.113 0 .222-.01.33-.035.218-.05.424-.15.598-.291.623-.51.72-1.435.209-2.06l-1.67-2.056c.145-.117.281-.244.408-.381.135.037.271.078.4.12.266.097.533.198.795.315 1.005.445 1.954 1.1 2.771 1.897.029.03.059.055.085.083l.17.175c.038.039.076.079.111.12.079.085.16.175.239.267l.126.15c.045.053.086.104.13.16l.114.15c.04.051.079.102.117.154.838 1.149.987 2.329.404 3.157v.005zM7.719 4.115l-.835-.051.053-.835.834.051-.052.835z"/>
+            </svg>
+        </a>
+        <a href="mailto:contact@cpdt.dev" title="Email contact@cpdt.dev">
+            <svg role="img" viewBox="0 0 32 32">
+                <path d="M2 26 L30 26 30 6 2 6 Z M2 6 L16 16 30 6" fill="none"  stroke-width="2" />
+            </svg>
+        </a>
+    </div>
 </div>
 
+<script>
+
+const $background = document.getElementById('background');
+const gl = $background.getContext('webgl');
+const ext = gl.getExtension('ANGLE_instanced_arrays');
+
+function compileShader(shaderType, src) {
+    const shader = gl.createShader(shaderType);
+    gl.shaderSource(shader, src);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, WebGLRenderingContext.COMPILE_STATUS)) {
+        throw new Error('Could not compile shader: ' + gl.getShaderInfoLog(shader));
+    }
+    return shader;
+}
+
+const vertexShaderSrc = `
+#version 100
+precision mediump float;
+uniform float seed;
+uniform float time;
+uniform vec2 circleSize;        // in clip-space coordinates
+attribute vec2 iaVertexPos;     // in normalized coordinates
+attribute float iaInstance;
+varying vec2 vsLocalPos;
+varying vec2 vsClipPos;
+varying vec3 vsColor;
+
+float random(vec2 x) {
+    return fract(sin(dot(x, vec2(12.9898, 78.233))) * 43758.5453123 + seed);
+}
+
+const float FLICKER_TIME = 0.1;
+const float BARREL_POWER = -0.15;
+
+vec2 distort(vec2 p) {
+    vec2 st = p * 0.5;
+    float theta = atan(st.x, st.y);
+    float radius = sqrt(dot(st, st));
+    radius *= 1. + BARREL_POWER * (radius * radius);
+    return radius * vec2(sin(theta), cos(theta)) * 2.;
+}
+
+void main() {
+    int instance = int(iaInstance);
+
+    float brightnessSeed = random(vec2(instance));
+    float brightness = pow(brightnessSeed, 15.) * 8. + 0.005;
+
+    vec2 instancePos = vec2(
+        random(vec2(instance, 0)),
+        random(vec2(instance + 489, 0))
+    ) * 2. - 1.;
+
+    float oldRadius = length(instancePos);
+    float newRadius = pow(oldRadius, 1.5);
+    instancePos *= newRadius / oldRadius;
+
+    instancePos *= 1.2;
+
+    vec2 clipVertexPos = iaVertexPos * circleSize;
+    gl_Position.xy = distort(instancePos + clipVertexPos);
+    gl_Position.zw = vec2(0., 1.);
+
+    vsLocalPos = iaVertexPos;
+    vsClipPos = gl_Position.xy;
+
+    float flickerTime = time + random(vec2(instance, 20));
+    float flickerSegment = flickerTime / FLICKER_TIME;
+    float flickerSegmentInt = floor(flickerSegment);
+    float startBrightness = random(vec2(instance, flickerSegmentInt));
+    float endBrightness = random(vec2(instance, flickerSegmentInt + 1.));
+    float flickerBrightness = pow(mix(startBrightness, endBrightness, fract(flickerSegment)), 0.1);
+
+    float colorChoice = step(random(vec2(instance, 234)), 0.5);
+    vsColor = mix(vec3(10., 2., 0.1), vec3(0.1, 0.1, 1.), colorChoice) * brightness * flickerBrightness;
+}
+`;
+const fragmentShaderSrc = `
+#version 100
+precision mediump float;
+varying vec2 vsLocalPos;
+varying vec2 vsClipPos;
+varying vec3 vsColor;
+
+vec3 uc2(vec3 x) {
+    return ((x*(0.15*x+0.1*0.5)+0.2*0.02)/(x*(0.15*x+0.5)+0.2*0.3))-0.02/0.3;
+}
+
+vec3 tonemap(vec3 x) {
+    x = x * 0.995;
+    x = uc2(x * 8.);
+    x *= 1. / uc2(vec3(11.2));
+    return x;
+}
+
+const vec2 CIRCLE_SCREEN_SIZE = vec2(15., 23.);
+void main() {
+    float dist = length(vsLocalPos);
+    vec3 chromaDist = vec3(
+        length(vsLocalPos + vec2(0., 1.) / CIRCLE_SCREEN_SIZE),
+        length(vsLocalPos + vec2(-0.866, -0.5) / CIRCLE_SCREEN_SIZE),
+        length(vsLocalPos + vec2(0.866, -0.5) / CIRCLE_SCREEN_SIZE)
+    );
+
+    float vignette = pow(clamp(1.4 - length(vsClipPos), 0., 1.), 2.);
+    vec3 intensity = mix(1., dist, 0.5) * smoothstep(vec3(1.), vec3(0.7), chromaDist) * vignette;
+    vec3 c = clamp(tonemap(intensity * vsColor), vec3(0.), vec3(1.));
+    c *= smoothstep(vec3(1.), vec3(0.8), vec3(dist));
+    gl_FragColor = vec4(c, 1.);
+}
+`;
+
+const vertexShader = compileShader(WebGLRenderingContext.VERTEX_SHADER, vertexShaderSrc);
+const fragmentShader = compileShader(WebGLRenderingContext.FRAGMENT_SHADER, fragmentShaderSrc);
+const program = gl.createProgram();
+gl.attachShader(program, vertexShader);
+gl.attachShader(program, fragmentShader);
+gl.bindAttribLocation(program, 0, 'iaVertexPos');
+gl.bindAttribLocation(program, 1, 'iaInstance');
+gl.linkProgram(program);
+if (!gl.getProgramParameter(program, WebGLRenderingContext.LINK_STATUS)) {
+    throw new Error('Could not link program: ' + gl.getProgramInfoLog(program));
+}
+
+const seedUniform = gl.getUniformLocation(program, "seed");
+const timeUniform = gl.getUniformLocation(program, "time");
+const circleSizeUniform = gl.getUniformLocation(program, "circleSize");
+
+gl.useProgram(program);
+gl.uniform1f(seedUniform, Math.random());
+
+const CIRCLE_SEGMENTS = 16;
+const circleVertexArray = new Float32Array((CIRCLE_SEGMENTS + 1) * 2);
+circleVertexArray[0] = 0;
+circleVertexArray[1] = 0;
+for (let circleSegment = 0; circleSegment < CIRCLE_SEGMENTS; circleSegment++) {
+    const segmentRadians = (circleSegment / CIRCLE_SEGMENTS) * Math.PI * 2;
+    const segmentIndex = 2 + circleSegment * 2;
+    circleVertexArray[segmentIndex] = Math.sin(segmentRadians);
+    circleVertexArray[segmentIndex + 1] = Math.cos(segmentRadians);
+}
+const circleVertexBuffer = gl.createBuffer();
+gl.bindBuffer(WebGLRenderingContext.ARRAY_BUFFER, circleVertexBuffer);
+gl.bufferData(WebGLRenderingContext.ARRAY_BUFFER, circleVertexArray, WebGLRenderingContext.STATIC_DRAW);
+gl.vertexAttribPointer(0, 2, WebGLRenderingContext.FLOAT, false, 0, 0);
+gl.enableVertexAttribArray(0);
+
+const circleIndexArray = new Int16Array(CIRCLE_SEGMENTS * 3);
+for (let circleSegment = 0; circleSegment < CIRCLE_SEGMENTS; circleSegment++) {
+    const segmentIndex = circleSegment * 3;
+    circleIndexArray[segmentIndex] = 1 + circleSegment;
+    circleIndexArray[segmentIndex + 1] = 1 + (circleSegment + 1) % CIRCLE_SEGMENTS;
+    circleIndexArray[segmentIndex + 2] = 0;
+}
+const circleIndexBuffer = gl.createBuffer();
+gl.bindBuffer(WebGLRenderingContext.ELEMENT_ARRAY_BUFFER, circleIndexBuffer);
+gl.bufferData(WebGLRenderingContext.ELEMENT_ARRAY_BUFFER, circleIndexArray, WebGLRenderingContext.STATIC_DRAW);
+
+let instanceData = new Int16Array(0);
+const instanceBuffer = gl.createBuffer();
+gl.bindBuffer(WebGLRenderingContext.ARRAY_BUFFER, instanceBuffer);
+gl.vertexAttribPointer(1, 1, WebGLRenderingContext.SHORT, false, 0, 0);
+gl.enableVertexAttribArray(1);
+ext.vertexAttribDivisorANGLE(1, 1);
+
+gl.enable(WebGLRenderingContext.BLEND);
+gl.blendFunc(WebGLRenderingContext.ONE, WebGLRenderingContext.ONE);
+
+const CIRCLE_SCREEN_SIZE_X = 15;
+const CIRCLE_SCREEN_SIZE_Y = 23;
+const CIRCLES_PER_PIXEL = 0.005;
+
+gl.clearColor(0.1, 0.1, 0.1, 1);
+
+const startTime = Date.now();
+function renderFrame() {
+    gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+    gl.clear(WebGLRenderingContext.COLOR_BUFFER_BIT);
+
+    const circleClipX = CIRCLE_SCREEN_SIZE_X / window.innerWidth;
+    const circleClipY = CIRCLE_SCREEN_SIZE_Y / window.innerHeight;
+
+    gl.useProgram(program);
+    gl.uniform1f(timeUniform, (Date.now() - startTime) / 1000);
+    gl.uniform2f(circleSizeUniform, circleClipX, circleClipY);
+
+    const pixelArea = window.innerWidth * window.innerHeight;
+    const circleCount = Math.floor(pixelArea * CIRCLES_PER_PIXEL);
+
+    if (instanceData.length !== circleCount) {
+        instanceData = new Int16Array(circleCount);
+        for (let i = 0; i < circleCount; i++) {
+            instanceData[i] = i;
+        }
+        gl.bindBuffer(WebGLRenderingContext.ARRAY_BUFFER, instanceBuffer);
+        gl.bufferData(WebGLRenderingContext.ARRAY_BUFFER, instanceData, WebGLRenderingContext.DYNAMIC_DRAW);
+    }
+
+    ext.drawElementsInstancedANGLE(WebGLRenderingContext.TRIANGLES, CIRCLE_SEGMENTS * 3, WebGLRenderingContext.UNSIGNED_SHORT, 0, circleCount);
+
+    requestAnimationFrame(renderFrame);
+}
+renderFrame();
+
+function resizeBackground() {
+    $background.width = window.innerWidth;
+    $background.height = window.innerHeight;
+    //renderFrame();
+}
+window.onresize = resizeBackground;
+resizeBackground();
+
+</script>
 </body>
 </html>
