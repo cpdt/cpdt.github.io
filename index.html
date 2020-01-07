@@ -244,7 +244,7 @@ const circleSizeUniform = gl.getUniformLocation(program, "circleSize");
 gl.useProgram(program);
 gl.uniform1f(seedUniform, Math.random());
 
-const CIRCLE_SEGMENTS = 16;
+const CIRCLE_SEGMENTS = 8;
 const circleVertexArray = new Float32Array((CIRCLE_SEGMENTS + 1) * 2);
 circleVertexArray[0] = 0;
 circleVertexArray[1] = 0;
