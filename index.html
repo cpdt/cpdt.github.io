@@ -159,7 +159,7 @@ void main() {
     int instance = int(iaInstance);
 
     float brightnessSeed = random(vec2(instance));
-    float brightness = pow(brightnessSeed, 15.) * 8. + 0.005;
+    float brightness = pow(brightnessSeed, 15.) * 9. + 0.005;
 
     vec2 instancePos = vec2(
         random(vec2(instance, 0)),
@@ -208,6 +208,10 @@ vec3 tonemap(vec3 x) {
     return x;
 }
 
+float random(vec2 x) {
+    return fract(sin(dot(x, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
 const vec2 CIRCLE_SCREEN_SIZE = vec2(15., 23.);
 void main() {
     float dist = length(vsLocalPos);
@@ -217,8 +221,9 @@ void main() {
         length(vsLocalPos + vec2(0.866, -0.5) / CIRCLE_SCREEN_SIZE)
     );
 
+    float noise = pow(random(gl_FragCoord.xy), 0.5) * 0.5 + 0.5;
     float vignette = pow(clamp(1.4 - length(vsClipPos), 0., 1.), 2.);
-    vec3 intensity = mix(1., dist, 0.5) * smoothstep(vec3(1.), vec3(0.7), chromaDist) * vignette;
+    vec3 intensity = mix(1., dist, 0.5) * smoothstep(vec3(1.), vec3(0.7), chromaDist) * vignette * noise;
     vec3 c = clamp(tonemap(intensity * vsColor), vec3(0.), vec3(1.));
     c *= smoothstep(vec3(1.), vec3(0.8), vec3(dist));
     gl_FragColor = vec4(c, 1.);
