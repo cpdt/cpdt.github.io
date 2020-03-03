@@ -31,7 +31,7 @@
             text-align: center;
             height: 10em;
             fill: white;
-            filter: drop-shadow(0 5px 30px #000) drop-shadow(0 5px 10px #000);
+            filter: drop-shadow(0 5px 20px #000);
             margin: 0 10px 2em;
         }
 
@@ -49,11 +49,11 @@
         #content a svg {
             fill: #fff;
             stroke: #fff;
-            filter: drop-shadow(0 0 15px #000) drop-shadow(0 0 10px #000) drop-shadow(0 0 5px #000);
+            filter: drop-shadow(0 0 10px #000);
         }
         #content a svg:hover {
-            fill: #ffc864;
-            stroke: #ffc864;
+            fill: #ff8590;
+            stroke: #ff8590;
         }
     </style>
 </head>
@@ -114,6 +114,11 @@
 
 <script>
 
+const CIRCLE_SCREEN_SIZE_X = 15*6;
+const CIRCLE_SCREEN_SIZE_Y = 23*6;
+const CIRCLES_PER_PIXEL = 0.0005;
+const CIRCLE_SEGMENTS = 16;
+
 const $background = document.getElementById('background');
 const gl = $background.getContext('webgl');
 const ext = gl.getExtension('ANGLE_instanced_arrays');
@@ -155,20 +160,25 @@ vec2 distort(vec2 p) {
     return radius * vec2(sin(theta), cos(theta)) * 2.;
 }
 
+float smoothRandom(vec2 x, float duration) {
+    float rtime = time + random(x);
+    float rsegment = rtime / duration;
+    float rsegmentInt = floor(rsegment);
+    float startVal = random(x + vec2(0, rsegmentInt));
+    float endVal = random(x + vec2(0, rsegmentInt + 1.));
+    return mix(startVal, endVal, fract(rsegment));
+}
+
 void main() {
     int instance = int(iaInstance);
 
     float brightnessSeed = random(vec2(instance));
-    float brightness = pow(brightnessSeed, 15.) * 9. + 0.005;
+    float brightness = pow(brightnessSeed, 20.) * 4. + 0.005;
 
     vec2 instancePos = vec2(
         random(vec2(instance, 0)),
         random(vec2(instance + 489, 0))
     ) * 2. - 1.;
-
-    float oldRadius = length(instancePos);
-    float newRadius = pow(oldRadius, 1.5);
-    instancePos *= newRadius / oldRadius;
 
     instancePos *= 1.2;
 
@@ -179,15 +189,10 @@ void main() {
     vsLocalPos = iaVertexPos;
     vsClipPos = gl_Position.xy;
 
-    float flickerTime = time + random(vec2(instance, 20));
-    float flickerSegment = flickerTime / FLICKER_TIME;
-    float flickerSegmentInt = floor(flickerSegment);
-    float startBrightness = random(vec2(instance, flickerSegmentInt));
-    float endBrightness = random(vec2(instance, flickerSegmentInt + 1.));
-    float flickerBrightness = pow(mix(startBrightness, endBrightness, fract(flickerSegment)), 0.1);
+    float flickerBrightness = pow(smoothRandom(vec2(instance, 20), FLICKER_TIME), 0.1) * 0.5 + 0.5;
 
-    float colorChoice = step(random(vec2(instance, 234)), 0.5);
-    vsColor = mix(vec3(10., 2., 0.1), vec3(0.1, 0.1, 1.), colorChoice) * brightness * flickerBrightness;
+    float colorChoice = step(random(vec2(instance, 234)), 0.6);
+    vsColor = mix(vec3(0.1, 1., 5.), vec3(1., 0.1, 0.1)/2., colorChoice) * brightness * flickerBrightness;
 }
 `;
 const fragmentShaderSrc = `
@@ -208,11 +213,7 @@ vec3 tonemap(vec3 x) {
     return x;
 }
 
-float random(vec2 x) {
-    return fract(sin(dot(x, vec2(12.9898, 78.233))) * 43758.5453123);
-}
-
-const vec2 CIRCLE_SCREEN_SIZE = vec2(15., 23.);
+const vec2 CIRCLE_SCREEN_SIZE = vec2(${CIRCLE_SCREEN_SIZE_X}, ${CIRCLE_SCREEN_SIZE_Y});
 void main() {
     float dist = length(vsLocalPos);
     vec3 chromaDist = vec3(
@@ -221,11 +222,11 @@ void main() {
         length(vsLocalPos + vec2(0.866, -0.5) / CIRCLE_SCREEN_SIZE)
     );
 
-    float noise = pow(random(gl_FragCoord.xy), 0.5) * 0.5 + 0.5;
+    float noise = 1.; //pow(random(gl_FragCoord.xy), 0.5) * 0.5 + 0.5;
     float vignette = pow(clamp(1.4 - length(vsClipPos), 0., 1.), 2.);
-    vec3 intensity = mix(1., dist, 0.5) * smoothstep(vec3(1.), vec3(0.7), chromaDist) * vignette * noise;
+    vec3 intensity = mix(1., dist, 0.5) * smoothstep(vec3(1.), vec3(0.8), chromaDist) * vignette * noise;
     vec3 c = clamp(tonemap(intensity * vsColor), vec3(0.), vec3(1.));
-    c *= smoothstep(vec3(1.), vec3(0.8), vec3(dist));
+    c *= smoothstep(vec3(1.), vec3(0.9), vec3(dist));
     gl_FragColor = vec4(c, 1.);
 }
 `;
@@ -249,7 +250,6 @@ const circleSizeUniform = gl.getUniformLocation(program, "circleSize");
 gl.useProgram(program);
 gl.uniform1f(seedUniform, Math.random());
 
-const CIRCLE_SEGMENTS = 8;
 const circleVertexArray = new Float32Array((CIRCLE_SEGMENTS + 1) * 2);
 circleVertexArray[0] = 0;
 circleVertexArray[1] = 0;
@@ -286,14 +286,17 @@ ext.vertexAttribDivisorANGLE(1, 1);
 gl.enable(WebGLRenderingContext.BLEND);
 gl.blendFunc(WebGLRenderingContext.ONE, WebGLRenderingContext.ONE);
 
-const CIRCLE_SCREEN_SIZE_X = 15;
-const CIRCLE_SCREEN_SIZE_Y = 23;
-const CIRCLES_PER_PIXEL = 0.005;
-
-gl.clearColor(0.1, 0.1, 0.1, 1);
+gl.clearColor(0.01, 0.1, 0.12, 1);
 
 const startTime = Date.now();
+let skipFrame = false;
 function renderFrame() {
+    if (skipFrame) {
+        skipFrame = false;
+        requestAnimationFrame(renderFrame);
+        return;
+    }
+
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
     gl.clear(WebGLRenderingContext.COLOR_BUFFER_BIT);
 
@@ -318,6 +321,7 @@ function renderFrame() {
 
     ext.drawElementsInstancedANGLE(WebGLRenderingContext.TRIANGLES, CIRCLE_SEGMENTS * 3, WebGLRenderingContext.UNSIGNED_SHORT, 0, circleCount);
 
+    skipFrame = true;
     requestAnimationFrame(renderFrame);
 }
 renderFrame();
@@ -325,7 +329,7 @@ renderFrame();
 function resizeBackground() {
     $background.width = window.innerWidth;
     $background.height = window.innerHeight;
-    //renderFrame();
+    skipFrame = false;
 }
 window.onresize = resizeBackground;
 resizeBackground();
